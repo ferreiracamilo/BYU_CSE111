@@ -31,6 +31,5 @@ while subtotal == 0:
     tax = subtotal * 0.06
     final = subtotal+tax
     
-    print(switch_day(wkday_num))
     print(f"Sales tax amount is {tax}")
     print(f"Total: {final:.2f}")
