@@ -34,8 +34,3 @@ while subtotal == 0:
     print(switch_day(wkday_num))
     print(f"Sales tax amount is {tax}")
     print(f"Total: {final:.2f}")
-
-# On Tuesday and Wednesday, if a customer’s subtotal is $50 or greater, the store will discount the customer’s subtotal by 10%.
-# Please enter the subtotal: 42.75
-# Sales tax amount: 2.56
-# Total: 45.31
