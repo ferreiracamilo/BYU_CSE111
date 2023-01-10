@@ -1,6 +1,9 @@
+import math
+
 manufactured_items_qty = int(input("Indicate how many items were manufactured"))
 capacity_box_qty = int(input("Indicate how many items fit in a box"))
-#the number of manufactured items
-#the number of items that the user will pack per box
 
-child_meal_price = float(input("What is the price of a child's meal? "))
+boxes_needed = math.ceil(manufactured_items_qty/capacity_box_qty)
+
+print(boxes_needed)
+#For 8 items, packing 5 items in each box, you will need 2 boxes.
