@@ -23,8 +23,11 @@ while subtotal == 0:
     subtotal = float(input("Please enter the subtotal: "))
     wkday_num = 4 #Friday
     #wkday_num = 2 #Tuesday
-    if (switch_day(wkday_num) == 'Tuesday' or switch_day(wkday_num) == 'Wednesday') and subtotal >= 50:
-        subtotal = subtotal * 0.9
+    if (switch_day(wkday_num) == 'Tuesday' or switch_day(wkday_num) == 'Wednesday'):
+        if subtotal >= 50:
+            subtotal = subtotal * 0.9
+        else:
+            print(f"You are {50-subtotal} dollars away from getting your discount")
     tax = subtotal * 0.06
     final = subtotal+tax
     
