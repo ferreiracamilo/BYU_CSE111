@@ -7,5 +7,7 @@ def function_name(param1, param2, paramN):
     """
     print("a")
 
-paramx1 = "a", paramx2 = "a", paramxN = "a"
+paramx1 = "a"
+paramx2 = "a"
+paramxN = "a"
 function_name(paramx1, paramx2, paramxN)
