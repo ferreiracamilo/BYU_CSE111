@@ -18,8 +18,8 @@ def main():
     print(f"Weight (kg): {weight_kg}")
     print(f"Height (cm): {height_cm}")
 
-    print(f"Body mass index: {body_mass_index(weight_kg,height_cm)}")
-    print(f"Basal metabolic rate (kcal/day): {basal_metabolic_rate(gender,weight_kg,height_cm,age)}")
+    print(f"Body mass index: {body_mass_index(weight_kg,height_cm):.2f}")
+    print(f"Basal metabolic rate (kcal/day): {basal_metabolic_rate(gender,weight_kg,height_cm,age):.2f}")
     pass
 
 
@@ -72,7 +72,11 @@ def body_mass_index(weight, height):
         height: a person's height in centimeters.
     Return: a person's body mass index.
     """
-    bmi = 10000 * kg_from_lb(weight) / cm_from_in(height)**2
+    # as the way formula is displayed I understand should be like this, however result does not match
+    # bmi = 10000 * kg_from_lb(weight) / cm_from_in(height)**2
+    
+    #after checking the sample solution I noticed there's a total different calculation
+    bmi = weight / (height ** 2) * 10000
     return bmi
 
 
@@ -98,3 +102,4 @@ def basal_metabolic_rate(gender, weight, height, age):
 
 # Call the main function so that
 # this program will start executing.
+main()
