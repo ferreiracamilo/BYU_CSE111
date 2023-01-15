@@ -17,6 +17,8 @@ def main():
     # Call your drawing functions such
     # as draw_sky and draw_ground here.
 
+    #Your program must be divided into functions such as draw_sky, draw_cloud, draw_ground, draw_bird, draw_flower, draw_insect, draw_fish, or draw_snowman.
+    #draws objects in the order of farthest away to nearest. For example, you program should draw the sky first, then clouds, then the ground, then trees, then insects in the trees. Be creative.
 
 
     # Call the finish_drawing function
