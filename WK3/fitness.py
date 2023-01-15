@@ -5,23 +5,21 @@ from datetime import datetime
 
 def main():
     
+    gender = input("Please enter your gender (M or F): ")
+    birthdate = input("Enter your birthdate (YYYY-MM-DD): ")
+    weight = int(input("Enter your weight in U.S. pounds: "))
+    height = int(input("Enter your height in U.S. inches: "))
 
-    Please enter your gender (M or F): F
-    Enter your birthdate (YYYY-MM-DD): 2001-03-21
-    Enter your weight in U.S. pounds: 125
-    Enter your height in U.S. inches: 54
-    Age (years): 19
-    Weight (kg): 56.70
-    Height (cm): 137.2
-    Body mass index: 30.1
-    Basal metabolic rate (kcal/day): 1315
-    # Get the user's gender, birthdate, height, and weight.
+    age = compute_age(birthdate)
+    weight_kg = kg_from_lb(weight)
+    height_cm = cm_from_in(height)
 
-    # Call the compute_age, kg_from_lb, cm_from_in,
-    # body_mass_index, and basal_metabolic_rate functions
-    # as needed.
+    print(f"Age (years): {age}")
+    print(f"Weight (kg): {weight_kg}")
+    print(f"Height (cm): {height_cm}")
 
-    # Print the results for the user to see.
+    print(f"Body mass index: {body_mass_index(weight_kg,height_cm)}")
+    print(f"Basal metabolic rate (kcal/day): {basal_metabolic_rate(gender,weight_kg,height_cm,age)}")
     pass
 
 
