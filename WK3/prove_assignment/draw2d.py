@@ -10,16 +10,16 @@ The functions in this library are simply wrapper functions that create
 and use tkinter objects. The benefits provided by these wrapper
 functions are as follows:
 1. Elminate the need for students' code to call object-oriented canvas
-   methods. Students' code calls functions instead of methods.
+    methods. Students' code calls functions instead of methods.
 2. Simplify the options available to only those needed to complete the
-   CSE 111 assignment.
+    CSE 111 assignment.
 3. Include type and value checking for the parameters passed to tkinter.
 
 Advantages of tkinter over kivy
 1. tkinter is installed as part of Python.
 2. With tkinter colors are passed as part of the calls to create_oval,
-   create_line, create_polygon, etc. which makes more sense to students
-   than kivy where they are added to the canvas before a shape is added.
+    create_line, create_polygon, etc. which makes more sense to students
+    than kivy where they are added to the canvas before a shape is added.
 """
 
 from tkinter import Tk, Frame, Canvas, BOTH, ARC
