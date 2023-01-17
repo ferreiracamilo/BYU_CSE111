@@ -31,21 +31,6 @@ def main():
 
 # Define your functions such as
 # draw_sky and draw_ground here.
-def draw_house(canvas, house_left, house_bottom):
-    print('a')
-
-def draw_bird(canvas, bird_center, bird_top):
-    print("a")
-
-def draw_pebble(canvas, pebble_left, pebble_top, pebble_radius):
-    print("a")
-
-def draw_picket(canvas, picket_left, picket_bottom):
-    print("a")
-
-def draw_grass_blade(canvas, blade_left, blade_top, blade_height):
-    print("a")
-
 def draw_street(canvas, scene_width, scene_height):
     draw_rectangle(canvas, 0, 0, scene_width, scene_height / 5, width=0, fill="snow3")
     for x in range(10, scene_width, 50):
