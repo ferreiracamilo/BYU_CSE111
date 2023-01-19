@@ -90,12 +90,8 @@ def basal_metabolic_rate(gender, weight, height, age):
     """
     bmr = 0
     if gender.upper == "F":
-        #mujer
-        # bmr = 447.593 + 9.247 weight + 3.098 height − 4.330 age
         bmr = 447.593 + 9.247 * kg_from_lb(weight) + 3.098 * cm_from_in(height) - 4.330 * age
     else:
-        #hombre
-        # bmr = 88.362 + 13.397 weight + 4.799 height − 5.677 age
         bmr = 88.362 + 13.397 * kg_from_lb(weight) + 4.799 * cm_from_in(height) - 5.677 * age
     return bmr
 
