@@ -14,8 +14,11 @@ def main():
 
     # Call your drawing functions such
     # as draw_sky and draw_ground here.
-    draw_sky(canvas, scene_width, scene_height)
-    draw_street(canvas, scene_width, scene_height)
+    
+    # draw_sky(canvas, scene_width, scene_height)
+    # draw_street(canvas, scene_width, scene_height)
+    sky_and_street(canvas, scene_width, scene_height)
+
     draw_bus_stop(canvas, scene_width, scene_height)
     draw_building(canvas, scene_width, scene_height)
     draw_pine_tree(canvas, scene_width/22*18, 100, 200)
@@ -31,6 +34,10 @@ def main():
 
 # Define your functions such as
 # draw_sky and draw_ground here.
+def sky_and_street(canvas, scene_width, scene_height):
+    draw_sky(canvas, scene_width, scene_height)
+    draw_street(canvas, scene_width, scene_height)
+
 def draw_street(canvas, scene_width, scene_height):
     draw_rectangle(canvas, 0, 0, scene_width, scene_height / 5, width=0, fill="snow3")
     for x in range(10, scene_width, 50):
