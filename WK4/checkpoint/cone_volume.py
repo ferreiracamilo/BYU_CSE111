@@ -10,7 +10,7 @@ def main():
     # the volume of an example cone.
     ex_radius = 2.8
     ex_height = 3.2
-    ex_vol = cone_volume()
+    ex_vol = cone_volume(ex_radius,ex_height)
 
     # Print several lines that describe this program.
     print("This program computes the volume of a right")
@@ -34,7 +34,7 @@ def main():
     print(f"Volume: {vol:.1f}")
 
 
-def cone_volume():
+def cone_volume(radius,height):
     """Compute and return the volume of a right circular cone."""
     volume = math.pi * radius**2 * height / 3
     return volume
