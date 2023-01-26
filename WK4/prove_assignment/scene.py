@@ -1,6 +1,6 @@
 # Import the functions from the Draw 2-D library
 # so that they can be used in this program.
-from draw2d import start_drawing, draw_line, draw_oval, draw_arc, draw_rectangle, draw_polygon, draw_text, finish_drawing, draw_vertical_gradient, draw_circle_with_vert_grad
+from draw2d import start_drawing, draw_line, draw_oval, draw_rectangle, draw_polygon, draw_text, finish_drawing, draw_vertical_gradient, draw_circle_with_vert_grad
 import random
 
 def main():
@@ -19,10 +19,6 @@ def main():
     # draw_street(canvas, scene_width, scene_height)
     
     sky_and_street(canvas, scene_width, scene_height)
-    draw_clouds(canvas, round(scene_width/22*15), round(scene_height/22*16), 10)
-    draw_clouds(canvas, round(scene_width/22*16), round(scene_height/22*12), 10)
-    draw_clouds(canvas, round(scene_width/22*17), round(scene_height/22*8), 10)
-
 
     draw_bus_stop(canvas, scene_width, scene_height)
     draw_building(canvas, scene_width, scene_height)
@@ -44,6 +40,11 @@ def main():
 def sky_and_street(canvas, scene_width, scene_height):
     draw_sky(canvas, scene_width, scene_height)
     draw_street(canvas, scene_width, scene_height)
+    draw_clouds(canvas, round(scene_width/22*1), round(scene_height/22*12), 10)
+    draw_clouds(canvas, round(scene_width/22*-2), round(scene_height/22*18), 10)
+    draw_clouds(canvas, round(scene_width/22*15), round(scene_height/22*16), 10)
+    draw_clouds(canvas, round(scene_width/22*16), round(scene_height/22*12), 10)
+    draw_clouds(canvas, round(scene_width/22*17), round(scene_height/22*8), 10)
 
 def draw_street(canvas, scene_width, scene_height):
     draw_rectangle(canvas, 0, 0, scene_width, scene_height / 5, width=0, fill="snow3")
