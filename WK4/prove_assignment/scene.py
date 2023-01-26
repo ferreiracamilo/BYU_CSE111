@@ -17,14 +17,21 @@ def main():
     
     # draw_sky(canvas, scene_width, scene_height)
     # draw_street(canvas, scene_width, scene_height)
+    
     sky_and_street(canvas, scene_width, scene_height)
+    draw_clouds(canvas, round(scene_width/22*15), round(scene_height/22*16), 10)
+    draw_clouds(canvas, round(scene_width/22*16), round(scene_height/22*12), 10)
+    draw_clouds(canvas, round(scene_width/22*17), round(scene_height/22*8), 10)
+
 
     draw_bus_stop(canvas, scene_width, scene_height)
     draw_building(canvas, scene_width, scene_height)
     draw_pine_tree(canvas, scene_width/22*18, 100, 200)
     draw_pine_tree(canvas, scene_width/22*21, 100, 130)
-    draw_circle_with_vert_grad(canvas, round(scene_width/22*3), round(scene_height/22*18), round(scene_height/22*3), [161,161,156], [240,239,226])
     
+    
+    draw_circle_with_vert_grad(canvas, round(scene_width/22*3), round(scene_height/22*18), round(scene_height/22*3), [161,161,156], [240,239,226])
+
     #Your program must be divided into functions such as draw_sky, draw_cloud, draw_ground, draw_bird, draw_flower, draw_insect, draw_fish, or draw_snowman.
     #draws objects in the order of farthest away to nearest. For example, you program should draw the sky first, then clouds, then the ground, then trees, then insects in the trees. Be creative.
 
@@ -69,6 +76,19 @@ def draw_building(canvas, scene_width, scene_height):
 def draw_sky(canvas, scene_width, scene_height):
     """Draw the sky and all the objects in the sky."""
     draw_rectangle(canvas, 0, scene_height / 5, scene_width, scene_height, width=0, fill="gray19")
+
+def draw_clouds(canvas, x, y, cloudy_constant):
+    axis_x_start = x
+    axis_y_start = y
+    for x in range(3):
+        for i in range(5):
+            axis_x_end = axis_x_start + 60
+            axis_y_end = axis_y_start + 60
+            draw_oval(canvas, axis_x_start, axis_y_start, axis_x_end, axis_y_end, width=0, fill="mistyRose2")
+            axis_x_start += 6
+            axis_y_start += 1
+        axis_x_start += 20
+        axis_y_start += 30
 
 def draw_pine_tree(canvas, center_x, bottom, height):
     """Draw a single pine tree.
