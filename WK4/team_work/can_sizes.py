@@ -1,5 +1,10 @@
 import math
 from tabulate import tabulate
+"""
+To execute succesfully this code, you'll need to install the library tabulate first
+1) Open Terminal (MAC) or CMD (Windows)
+2) Execute > pip install tabulate
+"""
 
 def compute_volume(radius, height):
     """Compute and return a can's volume.
