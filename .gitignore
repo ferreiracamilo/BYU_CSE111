@@ -1,3 +1,4 @@
 
 .DS_Store
 WK4/prove_assignment/__pycache__/draw2d.cpython-310.pyc
+*.pyc
