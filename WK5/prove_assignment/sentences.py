@@ -87,3 +87,19 @@ def get_verb(quantity, tense):
     # Randomly choose and return a determiner.
     word = random.choice(words)
     return word
+
+def main():
+    tense_time = random.choice(["present","future","past"])
+    tense_quantity = random.choice([1,2,4,5])
+    #Even though it was indicated in the prove assignment to follow certain data criteria for printing 6 sentences, I believe an iteration could be better
+    for x in range(6):
+        print(f"SENTENCE {x+1}")
+        print(f"Tense time selected was <{tense_time.upper()}> and tense quantity selected was <{tense_quantity}>")
+        print(f"{get_determiner(tense_quantity).capitalize()} {get_noun(tense_quantity)} {get_verb(tense_quantity, tense_time)}\n")
+
+# If this file is executed like this:
+# > python program.py
+# then call the main function. However, if this file is simply
+# imported (e.g. into a test file), then skip the call to main.
+if __name__ == "__main__":
+    main()
