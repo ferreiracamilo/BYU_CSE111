@@ -83,3 +83,7 @@ def get_verb(quantity, tense):
         words = ["drinks", "eats", "grows", "laughs", "thinks", "runs", "sleeps", "talks", "walks", "writes"]
     else:
         words = ["drink", "eat", "grow", "laugh", "think", "run", "sleep", "talk", "walk", "write"]
+    
+    # Randomly choose and return a determiner.
+    word = random.choice(words)
+    return word
