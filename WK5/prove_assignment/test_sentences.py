@@ -37,6 +37,12 @@ def test_get_determiner():
         # is one of the words in the plural_determiners list.
         assert word in plural_determiners
 
+def test_get_noun():
+    print("a")
+
+def test_get_verb():
+    print("a")
+
 # Call the main function that is part of pytest so that the
 # computer will execute the test functions in this file.
 pytest.main(["-v", "--tb=line", "-rN", __file__])
