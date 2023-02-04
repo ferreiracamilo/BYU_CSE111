@@ -12,7 +12,7 @@ def test_get_determiner():
     # If a loop's counting variable is not used inside the
     # body of the loop, many programmers will use underscore
     # (_) as the variable name for the counting variable.
-    for _ in range(4):
+    for i in range(4):
 
         # Call the get_determiner function which
         # should return a single determiner.
@@ -27,7 +27,7 @@ def test_get_determiner():
     plural_determiners = ["some", "many", "the"]
 
     # This loop will repeat the statements inside it 4 times.
-    for _ in range(4):
+    for i in range(4):
 
         # Call the get_determiner function which
         # should return a plural determiner.
