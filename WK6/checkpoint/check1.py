@@ -1,7 +1,7 @@
 # Example 1
 
 def main():
-    print("Are you surprised, Clark?)
+    print("Are you surprised, Clark?") #fix done adding "
 
 # Start this program by
 # calling the main function.
