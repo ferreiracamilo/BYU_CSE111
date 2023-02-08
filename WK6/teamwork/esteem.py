@@ -30,6 +30,7 @@ def calculate_question_score (answer,question_type):
         question_score = negative_score_dictionary[answer]
     return question_score
 
+
 def self_esteem_result(total_points):
     """Return a message to display based on total score obtained by user's answers
 
@@ -45,6 +46,7 @@ def self_esteem_result(total_points):
     else:
         message = "A score equal or above 15 may indicate there're no apparent self esteem issues."
     return message
+
 
 def main():
     total_score = 0
