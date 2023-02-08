@@ -87,6 +87,7 @@ def main():
     print(f"\nYour score is {total_score}.")
     print(f"\n{self_esteem_result(total_score)}")
 
+
 # Start this program by
 # calling the main function.
 if __name__ == "__main__":
