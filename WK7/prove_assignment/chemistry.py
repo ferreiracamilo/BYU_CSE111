@@ -1,6 +1,6 @@
 def make_periodic_table():
-    print("a")
-    elements_non_formatted = [
+    list_formatted = []
+    list_non_formatted = [
         "Ac",	"Actinium",	227,
         "Ag",	"Silver",	107.8682,
         "Al",	"Aluminum",	26.9815386,
@@ -97,12 +97,18 @@ def make_periodic_table():
         "Zr",	"Zirconium",	91.224
     ]
     i = 0
-    for one_line in elements_non_formatted:
-        print("a")
+    for i in range (0,len(list_non_formatted)-1,3):
+        chemical_element = [list_non_formatted[i],list_non_formatted[i+1],list_non_formatted[i+2]]
+        list_formatted.append(chemical_element)
+    return list_formatted
 
 
 def main():
-    print("a")
+    periodic_table = make_periodic_table()
+    for element in periodic_table:
+        element_name = element[1]
+        element_mass = element[2]
+        print(f"{element_name} {element_mass}")
 
 
 # If this file is executed like this:
