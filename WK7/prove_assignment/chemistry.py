@@ -1,4 +1,9 @@
 def make_periodic_table():
+    """Return a formatted list for the periodic table elements
+
+    Returns:
+        list: Each line contains an inner list for each chemical elements properties: symbol, name and mass
+    """
     list_formatted = []
     list_non_formatted = [
         "Ac",	"Actinium",	227,
