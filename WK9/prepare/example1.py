@@ -3,7 +3,8 @@
 def main():
     # Read the contents of a text file
     # named plants.txt into a list.
-    text_list = read_list("plants.txt")
+    filename_update = 'C:\\Users\\CamiloF\\Documents\\GitHub\\CSE111\\WK9\\prepare\\'
+    text_list = read_list(filename_update+"plants.txt")
 
     # Print the entire list.
     print(text_list)

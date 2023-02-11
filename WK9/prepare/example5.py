@@ -13,7 +13,8 @@ def main():
     # Read the contents of the dentists.csv into a
     # compound dictionary named dentists_dict. Use
     # the phone numbers as the keys in the dictionary.
-    dentists_dict = read_dictionary("dentists.csv", PHONE_INDEX)
+    filename_update = 'C:\\Users\\CamiloF\\Documents\\GitHub\\CSE111\\WK9\\prepare\\'
+    dentists_dict = read_dictionary(filename_update+"dentists.csv", PHONE_INDEX)
 
     # Print the dentists compound dictionary.
     print(dentists_dict)

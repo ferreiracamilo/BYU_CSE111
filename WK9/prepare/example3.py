@@ -12,7 +12,8 @@ NUM_PATIENTS_INDEX = 4
 def main():
     # Open a file named dentists.csv and store a reference
     # to the opened file in a variable named dentists_file.
-    with open("dentists.csv", "rt") as dentists_file:
+    filename_update = 'C:\\Users\\CamiloF\\Documents\\GitHub\\CSE111\\WK9\\prepare\\'
+    with open(filename_update+"dentists.csv", "rt") as dentists_file:
 
         # Use the csv module to create a reader
         # object that will read from the opened file.

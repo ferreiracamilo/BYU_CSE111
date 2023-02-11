@@ -5,7 +5,8 @@ import csv
 def main():
     # Read the contents of the dentists.csv file
     # into a compound list.
-    dentists_list = read_compound_list("dentists.csv")
+    filename_update = 'C:\\Users\\CamiloF\\Documents\\GitHub\\CSE111\\WK9\\prepare\\'
+    dentists_list = read_compound_list(filename_update+"dentists.csv")
 
     # Print the entire list.
     print(dentists_list)
