@@ -69,7 +69,7 @@ def read_dictionary(filename, key_column_index=None):
     Return: a dictionary that contains
         the contents of the CSV file.
     """
-    file_name_path = buildPath(filename)
+    file_name_path = buildPath_v3(filename)
     dict_students = {}
     index_id = 0
     index_name = 1
@@ -81,12 +81,21 @@ def read_dictionary(filename, key_column_index=None):
                 dict_students[row_list[index_id]] = row_list[index_name]
             index_row += 1
     return dict_students
-    
+
+def check_student(student_id, students_dict):
+    message = ""
+    if student_id in students_dict:
+        message = students_dict[student_id]
+    else:
+        message = "No such student"
+    return message
+
 def main():
     students_dict = read_dictionary("students.csv")
-    print(len(students_dict))
-    a = buildPath_v3("students.csv")
-    b = "dasdas"
+    student1 = input("Please enter an I-Number (xxxxxxxxx): ")
+    print(f"{check_student(student1,students_dict)}")
+    student2 = input("Please enter an I-Number (xxxxxxxxx): ")
+    print(f"{check_student(student2,students_dict)}")
 
 # Call main to start this program.
 if __name__ == "__main__":
