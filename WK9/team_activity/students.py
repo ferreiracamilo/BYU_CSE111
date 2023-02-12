@@ -57,7 +57,7 @@ def buildPath_v2(file_name):
     return final_path
 
 def buildPath_v3(file_name):
-    file_name_path = path.join(path.dirname(__file__), "students.csv")
+    file_name_path = path.join(path.dirname(__file__), file_name)
     return file_name_path
 
 def read_dictionary(filename, key_column_index=None):
