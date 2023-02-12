@@ -23,11 +23,15 @@ def read_dictionary(filename, key_column_index):
         next(reader)
         for row_list in reader:
             qty_columns = len(row_list)
-            data_value = []
+            value_dict = []
             for i in range(qty_columns):
                 if i != key_column_index:
-                    data_value.append(row_list[i])
-            outcome_dictionary[row_list[key_column_index]] = data_value
+                    column_data = row_list[i]
+                    if column_data.isnumeric():
+                        value_dict.append(float(column_data))    
+                    else:
+                        value_dict.append(column_data)
+            outcome_dictionary[row_list[key_column_index]] = value_dict
     return outcome_dictionary
 
-print(read_dictionary("products.csv",1))
+print(read_dictionary("products.csv",0))
