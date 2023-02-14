@@ -1,0 +1,4 @@
+There are many types of exceptions in Python, but there are only seven types that your code will 
+need to handle in CSE 111: TypeError, ValueError, ZeroDivisionError, IndexError, KeyError, FileNotFoundError, and PermissionError. 
+When writing code that writes to or reads from a file, a programmer usally writes try and except blocks to handle FileNotFoundError and PermissionError.
+Also, when writing code that gets input from a user, a programmer usually writes try and except blocks to help validate the user’s input.
