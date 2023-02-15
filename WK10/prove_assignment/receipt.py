@@ -1,6 +1,23 @@
 import csv
 from datetime import datetime
 from os import path
+import copy
+
+def is_float(a_string):
+    """Check if a string is possible to be cast into float
+        This method is built due to .isnumeric not identifying correclty all numbers
+
+    Args:
+        a_string (_type_): A string to be review
+
+    Returns:
+        boolean: It will state if a number is number or not
+    """
+    try:
+        float(a_string)
+        return True
+    except ValueError:
+        return False
 
 def buildPath(file_name):
     """Generate dinamically the path for the file to reach
@@ -46,7 +63,8 @@ def read_dictionary(filename, key_column_index):
             for i in range(qty_columns):
                 if i != key_column_index:
                     column_data = row_list[i]
-                    if column_data.isnumeric():
+                    if is_float(column_data):
+                    #if column_data.isnumeric():
                         value_dict.append(float(column_data))    
                     else:
                         value_dict.append(column_data)
@@ -73,28 +91,25 @@ def combine_product_request(request_dict,products_dict):
     Returns:
         dictionary: Dictionary containing -> product_id, product_name, product_price, request_quantity
     """
-    product_request_dict = products_dict
+    product_request_dict = copy.deepcopy(products_dict) #I tried with dictionary.copy() and dict() but original dictionary was still affected
     for product_id in product_request_dict:
         product_request_list = product_request_dict[product_id]
+        product_request_list.append(0)
         if product_id in request_dict:
             request_qty = request_dict[product_id][0]
-            product_request_list.append(int(request_qty))
-        else:
-            product_request_list.append(0)
+            product_request_list[2] = request_qty
     return product_request_dict
 
-def accumulated_amounts(products_dict,request_dict,tax_percentage):
+def accumulated_amounts(combine_product_request_dict,tax_percentage):
     """Return a dictionary containing subtotal and total
 
     Args:
-        products_dict (Dictionary): Dictionary containing products information
-        request_dict (Dictionary): Dictionary containing requests information
+        products_dict (Dictionary): Dictionary containing products and request information
         tax_percentage (float): Provide a tax rate as number
 
     Returns:
         Dictionary(String, Float): dictionary returning total; subtotal; no_items; sales_tax
     """
-    combine_product_request_dict = combine_product_request(request_dict,products_dict)
     accumulated_amounts_dict = {
         "no_items" : 0,
         "subtotal" : 0,
@@ -110,9 +125,8 @@ def accumulated_amounts(products_dict,request_dict,tax_percentage):
     accumulated_amounts_dict["total"] = accumulated_amounts_dict["subtotal"] + accumulated_amounts_dict["sales_tax"]
     return accumulated_amounts_dict
 
-def print_receipt(products_dict,request_dict,tax_percentage):
-    combine_product_request_dict = combine_product_request(request_dict,products_dict)
-    accumulated_amounts_dict = accumulated_amounts(products_dict,request_dict,tax_percentage)
+def print_receipt(combine_product_request_dict,tax_percentage):
+    accumulated_amounts_dict = accumulated_amounts(combine_product_request_dict,tax_percentage)
     index_name = 0
     index_price = 1
     index_quantity = 2
@@ -135,7 +149,9 @@ def print_receipt(products_dict,request_dict,tax_percentage):
 def main():
     products_dict = read_dictionary("products.csv",0)
     request_dict = read_dictionary("request.csv",0)
-    print_receipt(products_dict,request_dict,6)
+    combined_dictionary = combine_product_request(request_dict,products_dict)
+    # string_x = "a"
+    print_receipt(combined_dictionary,6)
     
 
 
