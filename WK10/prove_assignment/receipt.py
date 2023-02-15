@@ -3,8 +3,26 @@ from datetime import datetime
 from os import path
 
 def buildPath(file_name):
+    """Generate dinamically the path for the file to reach
+
+    Args:
+        file_name (String): file name to reach within the same folder that contains the .py file
+
+    Returns:
+        Sting: full path to locate file to reach
+    """
     file_name_path = path.join(path.dirname(__file__), file_name)
     return file_name_path
+
+def current_datet_formatted():
+    """Return the current date formatted to print on the receipt
+
+    Returns:
+        String: Current date time string formatted per prove assignment requirement
+    """
+    current_date_and_time = datetime.now()
+    current_date_time_formatted = f"{current_date_and_time:%A %I:%M %p}"
+    return current_date_time_formatted
 
 def read_dictionary(filename, key_column_index):
     """Read the contents of a CSV file into a compound
@@ -44,22 +62,81 @@ def read_dictionary(filename, key_column_index):
                 outcome_dictionary[key_dict] = new_list
     return outcome_dictionary
 
+def combine_product_request(request_dict,products_dict):
+    """Return a combination of the products dictionary and the request dictionary.
+        This will make easier to print the receipt.
+
+    Args:
+        request_dict (dictionary): Dictionary containing the request information
+        products_dict (dictionary): Dictionary containing the products information
+
+    Returns:
+        dictionary: Dictionary containing -> product_id, product_name, product_price, request_quantity
+    """
+    product_request_dict = products_dict
+    for product_id in product_request_dict:
+        product_request_list = product_request_dict[product_id]
+        if product_id in request_dict:
+            request_qty = request_dict[product_id][0]
+            product_request_list.append(int(request_qty))
+        else:
+            product_request_list.append(0)
+    return product_request_dict
+
+def accumulated_amounts(products_dict,request_dict,tax_percentage):
+    """Return a dictionary containing subtotal and total
+
+    Args:
+        products_dict (Dictionary): Dictionary containing products information
+        request_dict (Dictionary): Dictionary containing requests information
+        tax_percentage (float): Provide a tax rate as number
+
+    Returns:
+        Dictionary(String, Float): dictionary returning total; subtotal; no_items; sales_tax
+    """
+    combine_product_request_dict = combine_product_request(request_dict,products_dict)
+    accumulated_amounts_dict = {
+        "no_items" : 0,
+        "subtotal" : 0,
+        "sales_tax" : 0,
+        "total" : 0
+    }
+    index_price = 1
+    index_quantity = 2
+    for order_prod_id in combine_product_request_dict:
+        accumulated_amounts_dict["subtotal"] += order_prod_id[index_price] * order_prod_id[index_quantity]
+        accumulated_amounts_dict["no_items"] += order_prod_id[index_quantity]
+    accumulated_amounts_dict["sales_tax"] = accumulated_amounts_dict["subtotal"] * tax_percentage / 100
+    accumulated_amounts_dict["total"] = accumulated_amounts_dict["subtotal"] + accumulated_amounts_dict["sales_tax"]
+    return accumulated_amounts_dict
+
+def print_receipt(products_dict,request_dict,tax_percentage):
+    combine_product_request_dict = combine_product_request(request_dict,products_dict)
+    accumulated_amounts_dict = accumulated_amounts(products_dict,request_dict,tax_percentage)
+    index_name = 0
+    index_price = 1
+    index_quantity = 2
+    print("Inkom Emporium\n")
+
+    for order_prod_id in combine_product_request_dict:
+        name = order_prod_id[index_name]
+        price = order_prod_id[index_price]
+        quantity = order_prod_id[index_quantity]
+        print(f"{name}: {quantity} @ {price}")
+    
+    print(f"\nNumber of Items: {accumulated_amounts_dict['no_items']}")
+    print(f"Subtotal: {accumulated_amounts_dict['subtotal']}")
+    print(f"Sales Tax: {accumulated_amounts_dict['sales_tax']}")
+    print(f"Total: {accumulated_amounts_dict['total']}")
+
+    print("\nThank you for shopping at the Inkom Emporium.")
+    print(f"{current_datet_formatted}")
 
 def main():
     products_dict = read_dictionary("products.csv",0)
-    print(products_dict)
     request_dict = read_dictionary("request.csv",0)
-    print(products_dict)
-    print("\nRequested Items")
-    for product_id in request_dict:
-        quantity = request_dict[product_id]
-        # Print the product name, requested quantity, and product price.
-        product_name_index = 0
-        product_price_index = 1
-        product_name = products_dict[product_id][product_name_index]
-        product_price = products_dict[product_id][product_price_index]
-        print(f"{product_name}: {quantity} @ {product_price}")
-        # wheat bread: 2 @ 2.55
+    print_receipt(products_dict,request_dict,6)
+    
 
 
 # Call main to start this program.
