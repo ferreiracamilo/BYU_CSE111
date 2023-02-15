@@ -129,12 +129,12 @@ def print_receipt(combine_product_request_dict,tax_percentage):
         price = combine_product_request_dict[prod_id][index_price]
         quantity = combine_product_request_dict[prod_id][index_quantity]
         if quantity > 0:
-            print(f"{name}: {quantity} @ {price}")
+            print(f"{name}: {quantity:.0f} @ {price}")
     
     print(f"\nNumber of Items: {accumulated_amounts_dict['no_items']}")
-    print(f"Subtotal: {accumulated_amounts_dict['subtotal']}")
-    print(f"Sales Tax: {accumulated_amounts_dict['sales_tax']}")
-    print(f"Total: {accumulated_amounts_dict['total']}")
+    print(f"Subtotal: {accumulated_amounts_dict['subtotal']:.2f}")
+    print(f"Sales Tax: {accumulated_amounts_dict['sales_tax']:.2f}")
+    print(f"Total: {accumulated_amounts_dict['total']:.2f}")
 
     print("\nThank you for shopping at the Inkom Emporium.")
     current_date_and_time = datetime.now()
