@@ -94,7 +94,7 @@ def accumulated_amounts(combine_product_request_dict,tax_percentage):
     """Return a dictionary containing subtotal and total
 
     Args:
-        products_dict (Dictionary): Dictionary containing products and request information
+        combine_product_request_dict (Dictionary): Dictionary containing products and request information
         tax_percentage (float): Provide a tax rate as number
 
     Returns:
@@ -117,12 +117,19 @@ def accumulated_amounts(combine_product_request_dict,tax_percentage):
     accumulated_amounts_dict["total"] = accumulated_amounts_dict["subtotal"] + accumulated_amounts_dict["sales_tax"]
     return accumulated_amounts_dict
 
-def print_receipt(combine_product_request_dict,tax_percentage):
+def print_receipt(combine_product_request_dict,tax_percentage,store_name):
+    """Print receipt following required format
+
+    Args:
+        combine_product_request_dict (Dictionary): Containing product and request information
+        tax_percentage (Float): tax rate
+        store_name (String): store name to include at receipt
+    """
     accumulated_amounts_dict = accumulated_amounts(combine_product_request_dict,tax_percentage)
     index_name = 0
     index_price = 1
     index_quantity = 2
-    print("Inkom Emporium\n")
+    print(f"{store_name}\n")
 
     for prod_id in combine_product_request_dict:
         name = combine_product_request_dict[prod_id][index_name]
@@ -136,7 +143,7 @@ def print_receipt(combine_product_request_dict,tax_percentage):
     print(f"Sales Tax: {accumulated_amounts_dict['sales_tax']:.2f}")
     print(f"Total: {accumulated_amounts_dict['total']:.2f}")
 
-    print("\nThank you for shopping at the Inkom Emporium.")
+    print(f"\nThank you for shopping at the {store_name}.")
     current_date_and_time = datetime.now()
     print(f"{current_date_and_time:%A %I:%M %p}")
 
@@ -144,7 +151,7 @@ def main():
     products_dict = read_dictionary("products.csv",0)
     request_dict = read_dictionary("request.csv",0)
     combined_dictionary = combine_product_request(request_dict,products_dict)
-    print_receipt(combined_dictionary,6)
+    print_receipt(combined_dictionary,6,"Inkom Emporium")
     
 
 
