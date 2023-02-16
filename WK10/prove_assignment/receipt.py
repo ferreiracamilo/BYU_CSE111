@@ -3,6 +3,7 @@ from datetime import datetime
 from os import path
 import copy
 
+
 def is_float(a_string):
     """Check if a string is possible to be cast into float
         This method is built due to .isnumeric not identifying correclty all numbers
@@ -19,6 +20,7 @@ def is_float(a_string):
     except ValueError:
         return False
 
+
 def buildPath(file_name):
     """Generate dinamically the path for the file to reach
 
@@ -30,6 +32,7 @@ def buildPath(file_name):
     """
     file_name_path = path.join(path.dirname(__file__), file_name)
     return file_name_path
+
 
 def read_dictionary(filename, key_column_index):
     """Read the contents of a CSV file into a compound
@@ -70,6 +73,7 @@ def read_dictionary(filename, key_column_index):
                 outcome_dictionary[key_dict] = new_list
     return outcome_dictionary
 
+
 def combine_product_request(request_dict,products_dict):
     """Return a combination of the products dictionary and the request dictionary.
         This will make easier to print the receipt.
@@ -89,6 +93,7 @@ def combine_product_request(request_dict,products_dict):
             request_qty = request_dict[product_id][0]
             product_request_list[2] = request_qty
     return product_request_dict
+
 
 def accumulated_amounts(combine_product_request_dict,tax_percentage):
     """Return a dictionary containing subtotal and total
@@ -116,6 +121,7 @@ def accumulated_amounts(combine_product_request_dict,tax_percentage):
     accumulated_amounts_dict["sales_tax"] = accumulated_amounts_dict["subtotal"] * tax_percentage / 100
     accumulated_amounts_dict["total"] = accumulated_amounts_dict["subtotal"] + accumulated_amounts_dict["sales_tax"]
     return accumulated_amounts_dict
+
 
 def print_receipt(combine_product_request_dict,tax_percentage,store_name):
     """Print receipt following required format
@@ -147,13 +153,13 @@ def print_receipt(combine_product_request_dict,tax_percentage,store_name):
     current_date_and_time = datetime.now()
     print(f"{current_date_and_time:%A %I:%M %p}")
 
+
 def main():
     products_dict = read_dictionary("products.csv",0)
     request_dict = read_dictionary("request.csv",0)
     combined_dictionary = combine_product_request(request_dict,products_dict)
     print_receipt(combined_dictionary,6,"Inkom Emporium")
     
-
 
 # Call main to start this program.
 if __name__ == "__main__":
