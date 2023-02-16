@@ -111,10 +111,11 @@ def accumulated_amounts(combine_product_request_dict,tax_percentage):
         Dictionary(String, Float): dictionary returning total; subtotal; no_items; sales_tax
     """
     accumulated_amounts_dict = {
-        "no_items" : 0,
-        "subtotal" : 0,
-        "sales_tax" : 0,
-        "total" : 0
+        "no_items" : 0.0,
+        "subtotal" : 0.0,
+        "sales_tax" : 0.0,
+        "discount" : 0.0,
+        "total" : 0.0
     }
     index_price = 1
     index_quantity = 2
@@ -123,8 +124,12 @@ def accumulated_amounts(combine_product_request_dict,tax_percentage):
         quantity = combine_product_request_dict[prod_id][index_quantity]
         accumulated_amounts_dict["subtotal"] += price * quantity
         accumulated_amounts_dict["no_items"] += quantity
+    current_date_and_time = datetime.now()
+    hournow_24format = current_date_and_time.hour
+    if hournow_24format < 11:
+        accumulated_amounts_dict["discount"] = accumulated_amounts_dict["subtotal"] * 3 / 100
     accumulated_amounts_dict["sales_tax"] = accumulated_amounts_dict["subtotal"] * tax_percentage / 100
-    accumulated_amounts_dict["total"] = accumulated_amounts_dict["subtotal"] + accumulated_amounts_dict["sales_tax"]
+    accumulated_amounts_dict["total"] = accumulated_amounts_dict["subtotal"] + accumulated_amounts_dict["sales_tax"] - accumulated_amounts_dict["discount"]
     return accumulated_amounts_dict
 
 
@@ -152,11 +157,13 @@ def print_receipt(combine_product_request_dict,tax_percentage,store_name):
     print(f"\nNumber of Items: {accumulated_amounts_dict['no_items']}")
     print(f"Subtotal: {accumulated_amounts_dict['subtotal']:.2f}")
     print(f"Sales Tax: {accumulated_amounts_dict['sales_tax']:.2f}")
+    print(f"Discount (before 11 AM purchase): {accumulated_amounts_dict['discount']:.2f}")
     print(f"Total: {accumulated_amounts_dict['total']:.2f}")
 
     print(f"\nThank you for shopping at the {store_name}.")
     current_date_and_time = datetime.now()
     print(f"{current_date_and_time:%A %I:%M %p}")
+    print("Get 5 bucks discount on your next purchase, download the coupon at: https://i.imgur.com/kNG9Bwt.png")
     print("We invite you to let us know your feedback at: https://forms.gle/cMQcbKpL7VcrRmwf8")
 
 
