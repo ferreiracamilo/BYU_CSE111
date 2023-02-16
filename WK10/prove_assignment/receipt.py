@@ -161,7 +161,6 @@ def print_receipt(combine_product_request_dict,tax_percentage,store_name):
 
 
 def main():
-    check = read_dictionary("sproducts.csv",0)
     products_dict = read_dictionary("products.csv",0)
     request_dict = read_dictionary("request.csv",0)
     combined_dictionary = combine_product_request(request_dict,products_dict)
