@@ -77,6 +77,7 @@ def read_dictionary(filename, key_column_index):
         print("Error: missing file")
         print(f"[Errno 2] No such file or directory: '{filename}'\n")
 
+
 def combine_product_request(request_dict,products_dict):
     """Return a combination of the products dictionary and the request dictionary.
         This will make easier to print the receipt.
@@ -99,6 +100,7 @@ def combine_product_request(request_dict,products_dict):
         return product_request_dict
     except (KeyError) as key_err:
         print(type(key_err).__name__, key_err)
+
 
 def accumulated_amounts(combine_product_request_dict,tax_percentage):
     """Return a dictionary containing subtotal and total
