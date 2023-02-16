@@ -157,6 +157,7 @@ def print_receipt(combine_product_request_dict,tax_percentage,store_name):
     print(f"\nThank you for shopping at the {store_name}.")
     current_date_and_time = datetime.now()
     print(f"{current_date_and_time:%A %I:%M %p}")
+    print("We invite you to let us know your feedback at: https://forms.gle/cMQcbKpL7VcrRmwf8")
 
 
 def main():
