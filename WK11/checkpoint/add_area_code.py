@@ -1,3 +1,5 @@
+from os import path
+
 def main():
     try:
         # Open the file phone_numbers.txt for reading and read all
@@ -13,10 +15,14 @@ def main():
         # phone number that begins with the area code "208-" To do this,
         # call the map function and pass the add_area_code function and
         # the list of phone numbers as arguments to the map function.
+        # cels_temps = list(map(cels_from_fahr, fahr_temps))
+        print()
+        phone_numbers_corrected = list(map(add_area_code,phone_numbers))
+        print(phone_numbers_corrected)
         pass
 
         # Print the list with the corrected phone numbers.
-        print(new_numbers)
+        #print(new_numbers)
 
     except (FileNotFoundError, PermissionError) as error:
         print(type(error).__name__, error, sep=": ")
@@ -33,6 +39,9 @@ def add_area_code(phone_number):
         "ddd-dddd" or "ddd-ddd-dddd"
     Return: a string of digits formated as "ddd-ddd-dddd"
     """
+    if len(phone_number) < 12:
+        phone_number = f"208-{phone_number}"
+    return phone_number
     pass
 
 
@@ -49,7 +58,7 @@ def read_list(filename):
 
     # Open the text file for reading and store a reference
     # to the opened file in a variable named text_file.
-    with open(filename, "rt") as text_file:
+    with open(path.join(path.dirname(__file__), filename), "rt") as text_file:
 
         # Read the contents of the text
         # file one line at a time.
