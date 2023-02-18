@@ -1,20 +1,25 @@
 from datetime import datetime
 
 class Order:
+
+    CATEGORIES = ["Waiting","In Process","Delivered"]
+
     class_counter= 0
-    def __init__(self, customer, coupon, tax_rate):
+    def __init__(self, customer, discount, tax_rate):
         self.id = Order.class_counter,
-        self.customer = customer,
         self.date = datetime.now(),
-        self.coupon = coupon
-        self.requests = {}
+        self.requests = {},
+        self.status = "Waiting",
+        self.customer = customer,
+        self.discount = discount,
+        self.tax_rate = tax_rate
         Order.class_counter += 1
 
     def get_id(self):
         """Retrieve id
 
         Returns:
-            String: id
+            Int: id
         """
         return self.id
 
@@ -22,7 +27,7 @@ class Order:
         """Retrieve customer
 
         Returns:
-            String: customer
+            Customer: customer
         """
         return self.customer
     
@@ -30,22 +35,65 @@ class Order:
         """Retrieve date
 
         Returns:
-            String: date
+            Date: date
         """
         return self.date
 
-    def get_coupon(self):
-        """Retrieve coupon
+    def get_discount(self):
+        """Retrieve discount
 
         Returns:
-            String: coupon
+            Int: discount
         """
-        return self.coupon
+        return self.discount
     
     def get_requests(self):
         """Retrieve requests
 
         Returns:
-            String: requests
+            Dictionary{Product,Int}: requests
         """
         return self.requests
+
+    def get_tax_rate(self):
+        """Retrieve tax_rate
+
+        Returns:
+            Float: tax_rate
+        """
+        return self.tax_rate
+
+    def get_status(self):
+        """Retrieve status
+
+        Returns:
+            String: status
+        """
+        return self.status
+
+    def set_status(self, status):
+        """Update status
+
+        Args:
+            status (String): status
+        """
+        self.status = status
+    
+    def set_discount(self, discount):
+        """Update discount
+
+        Args:
+            discount (Float): discount
+        """
+        self.status = discount
+    
+    def set_tax_rate(self, tax_rate):
+        """Update tax_rate
+
+        Args:
+            tax_rate (Float): tax_rate
+        """
+        self.status = tax_rate
+
+    def add_update_requests(self, product, quantity):
+        print("define to add an item into the dictionary")
