@@ -79,7 +79,7 @@ class Customer:
         """
         self.birthdate = birthdate
     
-    def set_birthdate(self, billing_address):
+    def set_billing_address(self, billing_address):
         """Update billing_address
 
         Args:
@@ -87,10 +87,10 @@ class Customer:
         """
         self.billing_address = billing_address
 
-    def set_birthdate(self, shipping_address):
+    def set_shipping_address(self, shipping_address):
         """Update shipping_address
 
         Args:
             name (String): shipping_address
         """
-        self.billing_address = shipping_address
+        self.shipping_address = shipping_address
