@@ -1,9 +1,11 @@
 class Customer:
-    def __init__(self, id, name, lastname, birthdate):
+    def __init__(self, id, name, lastname, birthdate, billing_address, shipping_address):
         self.id = id,
         self.name = name,
         self.lastname = lastname,
-        self.birthdate = birthdate
+        self.birthdate = birthdate,
+        self.billing_address = billing_address,
+        self.shipping_address = shipping_address
     
     def get_id(self):
         """Retrieve a id from a specific customer
@@ -36,6 +38,22 @@ class Customer:
             String: birthdate
         """
         return self.birthdate
+
+    def get_shipping_address(self):
+        """Retrieve shipping address
+
+        Returns:
+            String: shipping address
+        """
+        return self.shipping_address
+
+    def get_billing_address(self):
+        """Retrieve billing address
+
+        Returns:
+            String: billing address
+        """
+        return self.billing_address
     
     def set_name(self, name):
         """Update name
@@ -46,7 +64,7 @@ class Customer:
         self.name = name
     
     def set_lastname(self, lastname):
-        """Update name
+        """Update lastname
 
         Args:
             name (String): lastname
@@ -59,4 +77,20 @@ class Customer:
         Args:
             name (Date): birthdate
         """
-        self.lastname = birthdate
+        self.birthdate = birthdate
+    
+    def set_birthdate(self, billing_address):
+        """Update billing_address
+
+        Args:
+            name (String): billing_address
+        """
+        self.billing_address = billing_address
+
+    def set_birthdate(self, shipping_address):
+        """Update shipping_address
+
+        Args:
+            name (String): shipping_address
+        """
+        self.billing_address = shipping_address
