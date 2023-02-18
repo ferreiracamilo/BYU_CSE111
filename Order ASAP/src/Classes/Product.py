@@ -9,58 +9,58 @@ class Product:
         self.category = category
 
     def get_code(self):
-        """Retrieve a code from a specific product
+        """Retrieve code
 
         Returns:
-            String: Product code
+            String: code
         """
         return self.code
     
     def get_name(self):
-        """Retrieve a name from a specific product
+        """Retrieve name
 
         Returns:
-            String: Product name
+            String: name
         """
-        return self.code
+        return self.name
 
     def get_price(self):
-        """Retrieve a price from a specific product
+        """Retrieve price
 
         Returns:
-            Float: Product price
+            Float: price
         """
-        return self.code
+        return self.price
 
     def get_category(self):
-        """Retrieve a category from a specific product
+        """Retrieve category
 
         Returns:
-            String: Product category
+            String: category
         """
-        return self.code
+        return self.category
 
     def set_name(self, name):
-        """Update a name of a specific product
+        """Update name
 
         Args:
-            name (String): Product name
+            name (String): name
         """
         self.name = name
 
     def set_price(self, price):
-        """Update a price of a specific product
+        """Update price
 
         Args:
-            price (String): Product price
+            price (String): price
         """
         self.price = price
     
     def set_category(self, category):
-        """Update a category of a specific product
+        """Update category
 
         Args:
-            category (String): Product category
+            category (String): category
         """
         self.category = category
 
