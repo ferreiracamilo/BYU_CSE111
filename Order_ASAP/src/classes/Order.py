@@ -8,7 +8,7 @@ class Order:
     def __init__(self, customer, discount, tax_rate):
         self.id = Order.class_counter,
         self.date = datetime.now(),
-        self.requests = {},
+        self.requests = [],
         self.status = "Waiting",
         self.customer = customer,
         self.discount = discount,
@@ -51,7 +51,7 @@ class Order:
         """Retrieve requests
 
         Returns:
-            Dictionary{Product,Int}: requests
+            List{Request}: requests
         """
         return self.requests
 
@@ -95,5 +95,10 @@ class Order:
         """
         self.status = tax_rate
 
-    def add_update_requests(self, product, quantity):
-        print("define to add an item into the dictionary")
+    def set_requests(self, requests_list):
+        """Update tax_rate
+
+        Args:
+            tax_rate (List[requests]): requests
+        """
+        self.requests = requests_list
